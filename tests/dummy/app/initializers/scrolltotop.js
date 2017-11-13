@@ -1,10 +1,10 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 
 export default {
     name: 'scroll-top',
-    initialize: function() {
-        Ember.Route.reopen({
-            renderTemplate: function() {
+    initialize() {
+        Route.reopen({
+            renderTemplate() {
                 this._super();
                 $("html, body").animate({
                     scrollTop: 0

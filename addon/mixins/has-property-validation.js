@@ -1,4 +1,8 @@
-import Ember from 'ember';
+import { alias } from '@ember/object/computed';
+import Mixin from '@ember/object/mixin';
+import { assert } from '@ember/debug';
+import { isNone } from '@ember/utils';
+import { defineProperty, computed } from '@ember/object';
 
 /*
 A mixin that enriches a component that is attached to a model property that has validation
@@ -7,21 +11,16 @@ A mixin that enriches a component that is attached to a model property that has 
 This mixin binds a property named `errors` to the model's `model.errors.@propertyName` array
  */
 
-export default Ember.Mixin.create({
-  init: function() {
+export default Mixin.create({
+  init() {
     this._super(...arguments);
-    Ember.assert(!Ember.isNone(this.get('propertyName')), 'propertyName is required.');
-    Ember.defineProperty(this, 'errors', Ember.computed.alias((`model.errors.${this.get('propertyName')}`)));
+    assert('propertyName is required.', !isNone(this.get('propertyName')));
+    defineProperty(this, 'errors', alias((`model.errors.${this.get('propertyName')}`)));
   },
-  status: Ember.computed('errors.length', 'form.isSubmitted', {
-    get: function() {
+
+  status: computed('errors.length', {
+    get() {
       if (this.get('errors.length')) {
-        if (this.get('form.showErrorsOnRender')) {
-          this.set('canShowErrors', true);
-        }
-        if (this.get('form.showErrorsOnSubmit') && this.get('form.isSubmitted')) {
-          this.set('canShowErrors', true);
-        }
         return 'error';
       } else {
         return 'success';

@@ -1,0 +1,29 @@
+{{#em-form-group model=model property=property inputComponent=this}}
+  <select onchange={{action "change"}} class="form-control {{elementClass}}" id={{inputId}} required={{required}} size={{size}} autofocus={{autofocus}} disabled={{disabled}} multiple={{multiple}}>
+    {{#if prompt}}
+      <option value="" selected={{eq "" selectedValue}}>
+      {{prompt}}
+      </option>
+    {{/if}}
+
+    {{#if optionGroupContentPath}}
+      {{#each content key="@index" as |group|}}
+        <optgroup label="{{get group optionGroupLabelPath}}">
+          {{#each (get group optionGroupContentPath) key="@index" as |item|}}
+            <option value="{{get item optionValuePath}}"
+                selected={{eq (get item optionValuePath) selectedValue}} disabled={{get item optionDisabledPath}}>
+              {{get item optionLabelPath}}
+            </option>
+          {{/each}}
+        </optgroup>
+      {{/each}}
+    {{else}}
+      {{#each content key="@index" as |item|}}
+        <option value="{{get item optionValuePath}}" selected={{eq (get item optionValuePath) selectedValue}} disabled={{get item optionDisabledPath}}>
+        {{get item optionLabelPath}}
+        </option>
+      {{/each}}
+    {{/if}}
+
+  </select>
+{{/em-form-group}}

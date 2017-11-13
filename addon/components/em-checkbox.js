@@ -1,5 +1,7 @@
-import Ember from 'ember';
-import FormGroupComponent from './em-form-group';
+import Component from '@ember/component';
+import { computed } from '@ember/object';
+import layout from '../templates/components/em-checkbox';
+import InputComponentMixin from '../mixins/input-component';
 
 /*
 Form Input
@@ -7,32 +9,27 @@ Form Input
 Syntax:
 {{em-checkbox property="property name"}}
  */
-export default FormGroupComponent.extend({
+export default Component.extend(InputComponentMixin, {
+  layout: layout,
   validationIcons: false,
   validations: false,
-  yieldInLabel: true,
-  htmlComponent: 'erf-html-checkbox',
-  wrapperClass: Ember.computed('form.formLayout', {
-    get: function() {
-      if (this.get('form.formLayout') === 'horizontal') {
-        return 'col-sm-offset-2 col-sm-10';
-      }
-    }
-  }),
-  labelWrapperClass: Ember.computed('form.formLayout', {
-    get: function() {
-      if (this.get('form.formLayout') === 'horizontal') {
-        return 'checkbox';
-      }
-      return null;
-    }
-  }),
-  "class": Ember.computed('form.formLayout', {
-    get: function() {
+  labelInControl: true,
+
+  groupClass: computed('form.formLayout', {
+    get() {
       if (this.get('form.formLayout') !== 'horizontal') {
         return 'checkbox';
       }
       return 'form-group';
+    }
+  }),
+
+  checkboxWrapper: computed('form.formLayout', {
+    get() {
+      if (this.get('form.formLayout') === 'horizontal') {
+        return 'checkbox';
+      }
+      return null;
     }
   })
 });

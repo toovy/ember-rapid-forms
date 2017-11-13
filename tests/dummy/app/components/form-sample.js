@@ -1,35 +1,41 @@
-import Ember from 'ember';
+import { A } from '@ember/array';
+import Component from '@ember/component';
 /*global alert*/
 
-export default Ember.Component.extend({
-    layout: 'default',
-    genderOptions: Ember.A([
-        {
-            id: 'M',
-            name: 'Male'
-        }, {
-            id: 'F',
-            name: 'Female'
-        }, {
-            id: 'O',
-            name: 'Other'
-        }
-    ]),
-    actions: {
-        validate: function() {
-            this.model.validate().then(function() {
-            }, () => {
-                this.model.showErrors();
-            });
-        },
-        clearValidations: function() {
-            this.model.hideErrors();
-        },
-        submit: function() {
-            return alert("Submitted!");
-        },
-        layout: function(t) {
-            return this.set('layout', t);
-        }
+export default Component.extend({
+  layout: 'default',
+  genderOptions: A([
+    {
+      id: 'M',
+      name: 'Male'
+    }, {
+      id: 'F',
+      name: 'Female'
+    }, {
+      id: 'O',
+      name: 'Other'
     }
+  ]),
+
+  actions: {
+    validate() {
+      this.model.validate().then(this._showErrors());
+    },
+
+    clearValidations() {
+      this.model.hideErrors();
+    },
+
+    submit() {
+      return alert("Submitted!");
+    },
+
+    layout(t) {
+      return this.set('layout', t);
+    }
+  },
+
+  _showErrors() {
+    this.model.showErrors();
+  }
 });

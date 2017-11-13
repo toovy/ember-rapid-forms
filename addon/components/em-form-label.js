@@ -1,6 +1,6 @@
-import Ember from 'ember';
-import InFormMixin from 'ember-rapid-forms/mixins/in-form';
+import Component from '@ember/component';
 import layout from '../templates/components/em-form-label';
+import HasClassClacMixin from '../mixins/has-class-calc';
 
 /*
 Form Label
@@ -19,26 +19,12 @@ Or can serve as a block helper for elements that needs to be wrapped within labe
     {{em-checkbox}}
 {{/em-form-label}}
  */
-export default Ember.Component.extend(InFormMixin, {
+export default Component.extend(HasClassClacMixin, {
   layout: layout,
   tagName: 'label',
   classNames: ['control-label'],
   classNameBindings: ['extraClass', 'inlineClassCalc', 'horiClassCalc'],
   attributeBindings: ['for'],
   horiClass: 'col-sm-2',
-  horiClassCalc: Ember.computed('form.isHorizontal', {
-    get: function() {
-      if (this.get('form.isHorizontal') && this.get('horiClass')) {
-        return this.get('horiClass');
-      }
-    }
-  }),
-  inlineClass: 'sr-only',
-  inlineClassCalc: Ember.computed('form.formLayout', {
-    get: function() {
-      if (this.get('form.isInline') && this.get('inlineClass')) {
-        return this.get('inlineClass');
-      }
-    }
-  })
+  inlineClass: 'sr-only'
 });

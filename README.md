@@ -18,27 +18,34 @@ Please visit the documentation for installation & usage documentations: http://p
 
 ### Version Support
 
-The Plugin starting from version 1.0.0 doesn't support ember versions below 1.13. If you need support for this work with a version < 1.0.0 or alternativly use https://github.com/indexiatech/ember-forms
+The Plugin starting from version 1.0.0 doesn't support ember versions below 1.13. If you need support for this work with a version < 1.0.0 or alternativly use https://github.com/indexiatech/ember-forms. If you use ember 2.0, 2.1 or 2.3, you have to use ember-rapid-forms '1.0.0-beta10'.
 
 
 ## Plugin Development
 
 ## Running
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+* `ember serve`
+* Visit your app at [http://localhost:4200](http://localhost:4200).
 
 ## Running Tests
 
 To test on all ember versions:
-`ember try:testall`
+`ember try:each`
 
 
+* `ember test`
 * `ember test --server`
 
 ## Building
 
 * `ember build`
+
+## Releasing a new version
+
+* Make the required changes which follow the [Conventional Commits Specification](https://conventionalcommits.org).
+* Run the script `npm run release`
+* `git push --tags` && `npm publish`
 
 
 ## Contributing

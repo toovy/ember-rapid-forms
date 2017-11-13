@@ -1,9 +1,11 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
+import { alias } from '@ember/object/computed';
 /*global alert*/
 
-export default Ember.Controller.extend({
+export default Controller.extend({
+  credentials: alias('model'),
   actions: {
-    submit: function() {
+    submit() {
       return alert("Logged in!");
     }
   }

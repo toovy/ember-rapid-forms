@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 
-export default Ember.Route.extend({
-  beforeModel: function() {
+export default Route.extend({
+  beforeModel() {
     return this.transitionTo('overview');
   }
 });

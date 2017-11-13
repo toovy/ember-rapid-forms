@@ -1,94 +1,91 @@
+/* eslint-env node */
 module.exports = {
+  useYarn: true,
   scenarios: [
     {
-      name: 'default',
-      dependencies: { }
-    },
-    {
-      name: 'ember-2.0',
-      dependencies: {
-        'ember': '2.0.3',
+      name: 'ember-lts-2.8',
+      bower: {
+        dependencies: {
+          'ember': 'components/ember#lts-2-8'
+        },
+        resolutions: {
+          'ember': 'lts-2-8'
+        }
+      },
+      npm: {
+        devDependencies: {
+          'ember-source': null
+        }
       }
     },
     {
-      name: 'ember-2.1',
-      dependencies: {
-        'ember': '2.1.2',
-      }
-    },
-    {
-      name: 'ember-2.2',
-      dependencies: {
-        'ember': '2.2.2',
-      }
-    },
-    {
-      name: 'ember-2.3',
-      dependencies: {
-        'ember': '2.3.2',
-      }
-    },
-    {
-      name: 'ember-2.4',
-      dependencies: {
-        'ember': '2.4.6',
-      }
-    },
-    {
-      name: 'ember-2.6',
-      dependencies: {
-        'ember': '2.6.2',
-      }
-    },
-    {
-      name: 'ember-2.7',
-      dependencies: {
-        'ember': '2.7.3',
-      }
-    },
-    {
-      name: 'ember-2.8',
-      dependencies: {
-        'ember': '2.8.0',
-      }
-    },
-    {
-      name: 'ember-2.5',
-      dependencies: {
-        'ember': '2.5.1',
-      }
-    },
-    {
-      name: 'ember-2.1',
-      dependencies: {
-        'ember': '2.1.1',
+      name: 'ember-lts-2.12',
+      bower: {
+        dependencies: {
+          'ember': 'components/ember#2.12.2'
+        },
+        resolutions: {
+          'ember': '2.12.2'
+        }
+      },
+      npm: {
+        devDependencies: {
+          'ember-source': null
+        }
       }
     },
     {
       name: 'ember-release',
-      dependencies: {
-        'ember': 'components/ember#release'
+      bower: {
+        dependencies: {
+          'ember': 'components/ember#release'
+        },
+        resolutions: {
+          'ember': 'release'
+        }
       },
-      resolutions: {
-        'ember': 'release'
+      npm: {
+        devDependencies: {
+          'ember-source': null
+        }
       }
     },
     {
       name: 'ember-beta',
-      dependencies: {
-        'ember': 'components/ember#beta'
+      bower: {
+        dependencies: {
+          'ember': 'components/ember#beta'
+        },
+        resolutions: {
+          'ember': 'beta'
+        }
       },
-      resolutions: {
-        'ember': 'beta'
+      npm: {
+        devDependencies: {
+          'ember-source': null
+        }
       }
     },
     {
       name: 'ember-canary',
-      dependencies: {
-        'ember': 'components/ember#canary'
+      bower: {
+        dependencies: {
+          'ember': 'components/ember#canary'
+        },
+        resolutions: {
+          'ember': 'canary'
+        }
       },
-      resolutions: {
-        'ember': 'canary'
+      npm: {
+        devDependencies: {
+          'ember-source': null
+        }
+      }
+    },
+    {
+      name: 'ember-default',
+      npm: {
+        devDependencies: {}
       }
     }
   ]
